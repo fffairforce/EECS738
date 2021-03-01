@@ -3,7 +3,8 @@ from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from scipy.stats import multivariate_normal
+from scipy.stats import multivariate_normal, bernoulli, betabinom, multinomial
+from sklearn.datasets import load_iris
 
 
 class GMM:
@@ -58,13 +59,14 @@ def readData(filename):
     dataMat = dataframe.to_numpy()
     # add labels matrix
     classLabels = []
-    for line in range(len(data)-1):
+    for line in range(len(data)):
         if data.iloc[line][4] == 'Iris-setosa':
             classLabels.append(1)
         elif data.iloc[line][4] == 'Iris-versicolor':
             classLabels.append(2)
         elif data.iloc[line][4] == 'Iris-virginica':
             classLabels.append(3)
+
     return dataMat, classLabels
 
 
@@ -94,21 +96,47 @@ def plot_axis_pairs(data, axis_pairs, clusters, classes):
 if __name__ == '__main__':
     filename = 'iris.data'
     data, classLabels = readData(filename)
+    #print(data[1], classLabels)
+    p = 0.3
+    mean, var, skew, kurt = bernoulli.stats(p, moments='mvsk')
+    print(mean, var, skew, kurt)
+    fig, ax = plt.subplots(1, 1)
+    # x = np.arange(bernoulli.ppf(0.01, p), bernoulli.ppf(0.99, p))
+    #for line in range(len(data)-1):
+    dataL1 = data[:, 1]
+
+    ax.plot(dataL1, bernoulli.pmf(dataL1, p), 'bo', ms=8, label='bernoulli pmf')
+    plt.show()
+    fig2, ax2 = plt.subplots(1, 1)
+    ax2.scatter(range(150), dataL1)
+    plt.show()
+
+    fig3, ax3 = plt.subplots(1, 1)
+    y = multivariate_normal.pdf(dataL1, mean=None, cov=1)
+    ax3.scatter(dataL1, y)
+    plt.show()
+
+    iris = load_iris()
+    X = iris.data
     np.random.seed(40)
     gmm = GMM(k=3, max_iter=10)
-    gmm.fit(data)
-    permutation = np.array([
-        mode(classLabels[gmm.predict(data) == i]).mode.item()
-        for i in range(gmm.k)])
-    permuted_prediction = permutation[gmm.predict(data)]
-    print(np.mean(classLabels == permuted_prediction))
-    confusion_matrix(classLabels, permuted_prediction)
-    plot_axis_pairs(data=data,
-        axis_pairs=[
-            (0, 1), (2, 3),
-            (0, 2), (1, 3)],
-        clusters=permuted_prediction,
-        classes=classLabels)
+    gmm.fit(X)
+
+    # np.random.seed(40)
+    # gmm = GMM(k=3, max_iter=10)
+    # gmm.fit(data)
+    # permutation = np.array([
+    #     mode(classLabels[gmm.predict(data) == i]).mode.item()
+    #     for i in range(gmm.k)])
+    # permuted_prediction = permutation[gmm.predict(data)]
+    # print(np.mean(classLabels == permuted_prediction))
+    # confusion_matrix(classLabels, permuted_prediction)
+    # plot_axis_pairs(data=data,
+    #     axis_pairs=[
+    #         (0, 1), (2, 3),
+    #         (0, 2), (1, 3)],
+    #     clusters=permuted_prediction,
+    #     classes=classLabels)
 
 #q to ask
 # 1. supervised/unsupervised
