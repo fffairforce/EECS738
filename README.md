@@ -36,6 +36,7 @@ go to norm.py and run lines, no input is needed.
 **results**
 
 iterations were made in the four attributes and distribution curves are shown in terms of three different types of flower
+
 ![image](https://user-images.githubusercontent.com/42806161/109463884-5c8f2700-7a2b-11eb-85ef-568e73bd18f9.png)
 
 ![image](https://user-images.githubusercontent.com/42806161/109463900-64e76200-7a2b-11eb-97c6-65b9fcc72e37.png)
