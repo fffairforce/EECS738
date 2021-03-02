@@ -110,6 +110,6 @@ the weights and means of GMM is as shown:
 
 ![image](https://user-images.githubusercontent.com/42806161/109565777-93575280-7aa8-11eb-848c-6fcd44e42fcf.png)
 
-##Conclusion and feedback
+## Conclusion and feedback
 
 Overall, the GMM worked well in giving a good distribution over the dataset and aligned well with the reference pairplot. but the EM probably need improvement since the gaussian scales in my plot didn't seem to be changing, i'm pretty sure i would need the fixed in the "E-step" but playing around with the likelihood formula crashed the code... I guess i need more help on implementing the distribution from scratch in terms of how to fit in the data and how to address the formula properly without meesing up the matrices.
