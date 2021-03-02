@@ -1,5 +1,7 @@
 # EECS738
-MachineLearning_course_projects
+### MachineLearning_course_project1
+
+### Willy Lee, BioE
 
 ## data 1 structure
 the attributes are 
@@ -25,7 +27,9 @@ The attributes are (dontated by Riccardo Leardi, riclea '@' anchem.unige.it )
 13) Proline
 
 ## project overview
-### The goal of this project is to make use of multiple distribution models and model the given data, over the project I worked with _normal distribution, binomial distrubution, GMM(gaussian mixture model)_ to address the problem, seaborn python library was used only for visually verify my distribution result
+### The goal of this project is to make use of multiple distribution models and model the given data, over the project I worked with _normal distribution, binomial distrubution, GMM(gaussian mixture model)_ to address the problem, seaborn python library was used only for visually verify my distribution result. In terms of the results for two dataset, I only provided extract analysis here for the second data in GMM model since it's a bit different in either data extraction and analyzation. Other than that the basic distributions are mostly identical in the code so i saved the redundent result for those.
+## Codes
+Most codes should be concated to .ipynb file for easy overview, if not, I named the source .py file for different distributions
 _**libraies**_ used in the project: pandas, numpy, matplotlib, scipy.stats 
 
 
@@ -35,7 +39,7 @@ go to norm.py and run lines, no input is needed.
 
 **results**
 
-iterations were made in the four attributes and distribution curves are shown in terms of three different types of flower
+This is just a generalized data sorting for myself to familiarize with the data and potentially make choices of which distributions to go with. Iterations were made in the four attributes and distribution curves are shown in terms of three different types of flower
 
 ![image](https://user-images.githubusercontent.com/42806161/109463884-5c8f2700-7a2b-11eb-85ef-568e73bd18f9.png)
 
@@ -65,31 +69,9 @@ Gaussian mixture model and EM algorithm is used to iterate over the ramdomized i
 As shown in the figures titles, GMM are iterated through data column by column, the distributions are much more fit to the color-code class data scatter below after a few iterations 
 
 ![image](https://user-images.githubusercontent.com/42806161/109467632-189f2080-7a31-11eb-8df6-4ada37a337a2.png)
-
 ![image](https://user-images.githubusercontent.com/42806161/109467657-218ff200-7a31-11eb-8abc-da27e34d4743.png)
 
-![image](https://user-images.githubusercontent.com/42806161/109467681-2c4a8700-7a31-11eb-9bf7-79b33cb49fd8.png)
-
-![image](https://user-images.githubusercontent.com/42806161/109467713-37051c00-7a31-11eb-8192-5642405aecc1.png)
-
-![image](https://user-images.githubusercontent.com/42806161/109467746-45533800-7a31-11eb-863f-85e3ea387e19.png)
-
-![image](https://user-images.githubusercontent.com/42806161/109467772-4e440980-7a31-11eb-8c93-8e00aec81acd.png)
-
-![image](https://user-images.githubusercontent.com/42806161/109467796-569c4480-7a31-11eb-8846-c475a6499dda.png)
-
-![image](https://user-images.githubusercontent.com/42806161/109467881-73387c80-7a31-11eb-9dd4-8f870aee7025.png)
-
-![image](https://user-images.githubusercontent.com/42806161/109467891-792e5d80-7a31-11eb-8707-6a42e4c40cdf.png)
-
-![image](https://user-images.githubusercontent.com/42806161/109467911-7fbcd500-7a31-11eb-8e81-bb1ba4d5ad4b.png)
-
-![image](https://user-images.githubusercontent.com/42806161/109467930-88151000-7a31-11eb-9bfe-0780be1d3a9e.png)
-
-![image](https://user-images.githubusercontent.com/42806161/109467944-8e0af100-7a31-11eb-89b6-6ca3724dd899.png)
-
 ![image](https://user-images.githubusercontent.com/42806161/109467964-95ca9580-7a31-11eb-8cb7-94ef53cbe888.png)
-
 ![image](https://user-images.githubusercontent.com/42806161/109467988-9bc07680-7a31-11eb-9951-377945f48852.png)
 
 **algorithm verification**
@@ -103,23 +85,31 @@ Comparing to the 2D distribution seaborn plot, our GMM model worked out best to 
 In order to save space, only partial of columns' initial and final distribution plot is shown here.
 
 ![image](https://user-images.githubusercontent.com/42806161/109472656-04aaed00-7a38-11eb-8f56-0fe94575e622.png)
-
 ![image](https://user-images.githubusercontent.com/42806161/109476682-ccf27400-7a3c-11eb-93ce-3a602d3c33e9.png)
-
 ![image](https://user-images.githubusercontent.com/42806161/109476715-d380eb80-7a3c-11eb-8ae4-f5e7b3ab774c.png)
-
 ![image](https://user-images.githubusercontent.com/42806161/109476743-daa7f980-7a3c-11eb-92b2-396b54a0c346.png)
-
 ![image](https://user-images.githubusercontent.com/42806161/109476764-e1cf0780-7a3c-11eb-83c3-a5a5351ab300.png)
-
 ![image](https://user-images.githubusercontent.com/42806161/109476780-e7c4e880-7a3c-11eb-98bc-7d575dfe91b9.png)
-
 ![image](https://user-images.githubusercontent.com/42806161/109476826-f4494100-7a3c-11eb-872d-484688ebfa6a.png)
-
 ![image](https://user-images.githubusercontent.com/42806161/109476864-fd3a1280-7a3c-11eb-8cf6-710642e5f4ba.png)
-
 ![image](https://user-images.githubusercontent.com/42806161/109476903-05924d80-7a3d-11eb-956d-4b7f04f4c792.png)
-
 ![image](https://user-images.githubusercontent.com/42806161/109476922-0aef9800-7a3d-11eb-8b6b-a3253f306f63.png)
 
-turns out the distributions are distinguishable in different labels, but clearly, some labels won't work and can;t provide a good distribution
+turns out the distributions are distinguishable in different labels, but clearly, some labels won't work and can't provide a good distribution, that's where we found it not helpful to simply apply gmm on every factor, so correlations between factors were aligned as shown below in a heatmap.
+
+![image](https://user-images.githubusercontent.com/42806161/109554299-a7478800-7a99-11eb-953b-bb03675774fb.png)
+
+From the heatmap above, we can conclude that the correlation between
+
+"Flavanoids" and "Total phenols" (0.86);
+"OD280" and "Flavanoids" (0.79);
+"OD280" and "Total phenols" (0.7);
+are large.
+
+the weights and means of GMM is as shown:
+
+![image](https://user-images.githubusercontent.com/42806161/109565777-93575280-7aa8-11eb-848c-6fcd44e42fcf.png)
+
+##Conclusion and feedback
+
+Overall, the GMM worked well in giving a good distribution over the dataset and aligned well with the reference pairplot. but the EM probably need improvement since the gaussian scales in my plot didn't seem to be changing, i'm pretty sure i would need the fixed in the "E-step" but playing around with the likelihood formula crashed the code... I guess i need more help on implementing the distribution from scratch in terms of how to fit in the data and how to address the formula properly without meesing up the matrices.
